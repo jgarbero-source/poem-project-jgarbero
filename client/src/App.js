@@ -1,51 +1,73 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from "./Login.js";
+import Header from "./Header.js";
+import NavBar from "./Navbar.js";
+import Signup from "./Signup.js";
+import Poems from "./Poems.js";
+import PoemsHome from './PeomsHome';
+import User from "./User.js";
+import UserNav from "./UserNav.js";
+import UserEditForm from "./UserEditForm.js";
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Routes, Route, useNavigate, NavLink, BrowserRouter } from "react-router-dom";
 
 function App() {
+  const [poems, setPoems] = useState([])
+  const [user, setUser] = useState(null)
+  const navigate = useNavigate();
 
-  const [count, setCount] = useState(0);
+  function handleLogin(user) {
+    setUser(user);
+    console.log(user)
+  }
+
+  function doLogout() {
+    navigate("/")
+    setUser(null)
+    console.log(null)
+  }
+
+  function deleteUser() {
+    setUser(null)
+    navigate("/")
+  }
+
+  function updateUser(updatedUser) {
+    setUser(updatedUser)
+  }
+
+
 
   useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((client) => {
+          setUser(client);
+          console.log(client);
+        });
+      } else {
+        console.log("We're not rendering nothing pal");
+      }
+    });
   }, []);
 
   return (
-    <BrowserRouter>
-    <div className="App">
-      <Switch>
-        <Route path="/testing">
-          <h1>Test Route</h1>
-        </Route>
-        <Route path="/">
-          <h1>Page Count: {count}</h1>
-        </Route>
-      </Switch>
-    </div>
-  </BrowserRouter>
-  );
+    <div>
+      <h1>The Poetry App</h1>
+      <Header user={user} doLogout={doLogout} />
+      <NavBar />
+      {user? <UserNav/> : null }
+      <Routes>
+        <Route exact path="/" element={<PoemsHome/>}/>
+        <Route path="/signup" element={<Signup />}/>
+        <Route path="/login" element={<Login handleLogin={handleLogin} />}/>
+        <Route path="/poems" element={<Poems/>}/>
+        <Route path="/user" element={<User user={user}/>}/>
+        <Route path="/user/edit" element={<UserEditForm user={user} updateUser={updateUser}/>}/>
+      </Routes>
 
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
+    </div>
+  );
 }
 
 export default App;
