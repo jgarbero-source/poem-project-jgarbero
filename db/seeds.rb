@@ -86,7 +86,8 @@ Poem.create(
         "down again and again among the flowers, and",
         "look up into the sky."
     ],
-    linecount: 4
+    linecount: 4,
+    user_id: 4
 )
 
 Poem.create(
@@ -98,7 +99,8 @@ Poem.create(
         "The trees forgive and",
         "outlive terror."
     ],
-    linecount: 4
+    linecount: 4,
+    user_id: 3
 )
 
 Poem.create(
@@ -109,7 +111,8 @@ Poem.create(
         "thing",
         "sorry for itself."
     ],
-    linecount: 3
+    linecount: 3,
+    user_id: 1
 )
 
 Poem.create(
@@ -122,7 +125,8 @@ Poem.create(
         "beautiful things. To find oneself",
         "placed in their midst. Choiceless."
     ],
-    linecount: 5
+    linecount: 5,
+    user_id: 2
 )
 
 Poem.create(
@@ -144,7 +148,8 @@ Poem.create(
         "And I enjoyed them and had some time over.",
         "I love you. I'm glad I exist."
     ],
-    linecount: 14
+    linecount: 14,
+    user_id: 1
 )
 
 Poem.create(
@@ -158,7 +163,8 @@ Poem.create(
         "trivialities, we are eaten up",
         "by nothing."
     ],
-    linecount: 6
+    linecount: 6,
+    user_id:3
 )
 
 Poem.create(
@@ -172,58 +178,76 @@ Poem.create(
         "anybody of such beauty your eyes",
         "dance, as the waves danced,"
     ],
-    linecount: 6
+    linecount: 6,
+    user_id: 4
+)
+
+Poem.create(
+    title: "Among the Ruins",
+    author: "Kristin Kory",
+    lines: [
+        "Before I put myself back together,",
+        "I spent some time among the ruins;",
+        "a dark and magnificent place",
+        "where I got to know all the pieces of my soul--",
+        "pieces of me",
+        "that I didn't even know existed."
+    ],
+    linecount: 6,
+    user_id: 2
 )
 
 puts "Writing reviews..."
 
 Comment.create(
     content: "This poem really moves me. It makes me want to be more affectionate with love ones in my life.",
-    poem_id: 6,
-    user_id: 1
+    commented_poem_id: 6,
+    commenter_id: 1
 )
 
 Comment.create(
     content: "I feel so small compared the world when I read this poem, and that makes me grateful. There's so much beauty to see.",
-    poem_id: 4,
-    user_id: 1
+    commented_poem_id: 4,
+    commenter_id: 1
 )
 
 Comment.create(
     content: "I wish I could lay in the flowers forever. That's really what life is about anyways.",
-    poem_id: 1,
-    user_id: 2
+    commented_poem_id: 1,
+    commenter_id: 2
 )
 
 Comment.create(
     content: "This poem is correct. We should never be apologetic for who we truly are or pity ourselves for not being perfect. It's unnatural.",
-    poem_id: 3,
-    user_id: 2
+    commented_poem_id: 3,
+    commenter_id: 2
 )
 
 Comment.create(
     content: "This poem reminds me to approach life lightly.",
-    poem_id: 5,
-    user_id: 3
+    commented_poem_id: 5,
+    commenter_id: 3
 )
 
 Comment.create(
     content: "The trees and plants speak to us, feed us, and protect us even though we've done nothing but destroy them.",
-    poem_id: 2,
-    user_id: 3
+    commented_poem_id: 2,
+    commenter_id: 3
 )
 
 Comment.create(
     content: "I wish I could think this way about an orange.",
-    poem_id: 5,
-    user_id: 4
+    commented_poem_id: 5,
+    commenter_id: 4
 )
 
 Comment.create(
     content: "I want to do this with my lover.",
-    poem_id: 1,
-    user_id: 4
+    commented_poem_id: 1,
+    commenter_id: 4
 )
+
+puts "Finished seeding!"
 
 
 

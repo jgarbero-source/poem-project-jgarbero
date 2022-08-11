@@ -10,6 +10,11 @@ class UsersController < ApplicationController
         render json: @current_user
     end
 
+    def show
+        user = find_user
+        render json: user, status: :ok
+    end
+
     def index
         render json: User.all
     end
@@ -18,6 +23,12 @@ class UsersController < ApplicationController
         user = find_user
         user.update!(user_params)
         render json: user, status: :ok
+    end
+
+    def destroy
+        user = find_user
+        user.destroy
+        head :no_content, status: :ok
     end
 
     private

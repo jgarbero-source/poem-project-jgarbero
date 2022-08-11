@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Poem from "./Poem.js"
 
-function Poems() {
+
+function Poems({ user }) {
     const [poems, setPoems] = useState([])
 
     useEffect(() => {
@@ -13,14 +14,10 @@ function Poems() {
           });
       }, []);
 
-    // const poemList = poems.map((poem) => (
-    //     <Poem key={poem.id} poem={poem}/>
-    // ))
-
     return (
         <div>
             {poems.map((poem) => (
-            <Poem key={poem.id} poem={poem}/>
+            <Poem key={poem.id} poem={poem} user={user}/>
             ))}
         </div>
     )

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Poem from "./Poem.js"
 
-function PoemsHome() {
+function PoemsHome({user}) {
     const [poem, setPoem] = useState([])
 
     useEffect(() => {
@@ -18,14 +18,10 @@ function PoemsHome() {
         return featuredPoem
     }
 
-    console.log(poem)
-
-    const { title, author, lines, linecount } = poem
-
     return(
         <div>
             <h2>Featured Poem</h2>
-            <Poem key={poem.id} poem={poem}/>
+            <Poem key={poem.id} user={user} poem={poem}/>
         </div>
     )
 }

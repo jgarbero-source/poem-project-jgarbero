@@ -5,6 +5,7 @@ class CreatePoems < ActiveRecord::Migration[7.0]
       t.string :author
       t.text :lines
       t.integer :linecount
+      t.integer :user_id
 
       t.timestamps
     end
