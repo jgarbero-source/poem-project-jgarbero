@@ -21,6 +21,8 @@ function UserCom({comment, poems, user}) {
         })
     }, [])
 
+    console.log(commentedPoems)
+
     function handleDelete() {
         fetch(`/comments/${comment.id}`, {
             method: "DELETE",
@@ -48,7 +50,7 @@ function UserCom({comment, poems, user}) {
             <li>{comment.content}</li>
             <button><Link to="/user/comments/:id" state={{comment: {comment}}}>Edit Comment</Link></button>
             <button onClick={handleDelete}>Delete Comment</button>
-            {/* <small>commented on "{commentedPoems.title}"</small> */}
+            {/* {commentedPoems? <small>commented on "{commentedPoems.title}"</small>:null} */}
         </div>
     )
 }

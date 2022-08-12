@@ -1,65 +1,68 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function WritePoem({ user }) {
+function UserPoemEditForm({user}) {
     const navigate = useNavigate();
+    const location = useLocation();
     const [formData, setFormData] = useState({});
-    const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState([])
 
     useEffect(() => {
-        let starterFormData = {
-            title: "",
-            author: "",
-            lines: "",
-            linecount: null,
-            user_id: null
+        async function start(){
+            let starterFormData = {
+                "title": location.state.poem.poem.title,
+                "author": location.state.poem.poem.author,
+                "lines": location.state.poem.poem.lines.toString(),
+                "linecount": location.state.poem.poem.linecount,
+                "user_id": location.state.poem.poem.user_id
+            }
+            setFormData(starterFormData)
         }
-        setFormData(starterFormData);
+        start()
     }, [])
 
-    function goBack(e) {
-        e.preventDefault()
-        navigate(`/user/poems`)
-    }
+    const lines = location.state.poem.poem.lines.toString()
 
     function handleChange(e) {
         const { value, name } = e.target;
         setFormData({ ...formData, [name]: value });
     }
 
-    function handleSubmit(e) {
-        e.preventDefault()
-        fetch('/poems', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(readyNewPoem())
-        }).then((p) => {
-            if (p.ok) {
-                p.json().then((poem) => {
-                    console.log(poem);
-                    navigate('/user/poems')
-                });
-            } else {
-                p.json().then((json) => setErrors(Object.entries(json.errors)));
-            }
-        })
-    }
-
-    function readyNewPoem(e){
+    function readyUpdatePoem(){
         let toSend = formData
-        toSend.user_id = user.id
         toSend.lines = toSend.lines.split("/")
         toSend.linecount = toSend.lines.length
         console.log(toSend)
         return toSend
     }
 
+    function handleSubmit(e){
+        e.preventDefault()
+        fetch(`/poems/${location.state.poem.poem.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify(readyUpdatePoem())
+        })
+        .then(p => {
+            if (p.ok) {
+                navigate(`/user/poems`)
+            } else {
+                p.json().then(json => setErrors(Object.entries(json.errors)))
+            }
+        })
+    }
+
+    function goBack(e) {
+        e.preventDefault();
+        navigate(`/user/poems`);
+    }
+
     return(
         <div>
-            <h2>Submit your poem here:</h2>
+            <h2>Update your poem here:</h2>
             {errors ? errors.map((e) => <div key={e[0]}>{e[1]}</div>) : null}
             <form onSubmit={handleSubmit}>
                 <label>
@@ -99,11 +102,11 @@ function WritePoem({ user }) {
                 </label>
                 <br />
                 <br />
-                <button>Create Poem</button>
+                <button>Update Poem</button>
                 <button onClick={e=>goBack(e)}>Back</button>
             </form>
         </div>
     )
 }
 
-export default WritePoem;
+export default UserPoemEditForm;

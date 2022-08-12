@@ -10,14 +10,13 @@ function Poems({ user }) {
           .then((r) => r.json())
           .then((r) => {
             setPoems(r);
-            console.log(r);
           });
       }, []);
 
     return (
         <div>
             {poems.map((poem) => (
-            <Poem key={poem.id} poem={poem} user={user}/>
+            <Poem key={poem.id} poem={poem} edit={false} user={user}/>
             ))}
         </div>
     )

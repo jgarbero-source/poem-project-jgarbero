@@ -18,6 +18,11 @@ function UserEditForm({ user, updateUser }) {
         setFormData({ ...formData, [name]: value })
     }
 
+    function goBack(e){
+        e.preventDefault()
+        navigate(`/user`)
+    }
+
     function handleSubmit(e) {
         e.preventDefault()
         console.log(formData)
@@ -64,6 +69,7 @@ function UserEditForm({ user, updateUser }) {
                 <textarea type="text" name="bio" placeholder={bio} value={formData.bio} onChange={handleChange} />
             </label>
             <button>Save</button>
+            <button onClick={e=>goBack(e)}>Back</button>
             </form>
         </div>
     )

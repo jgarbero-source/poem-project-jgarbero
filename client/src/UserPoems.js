@@ -1,19 +1,30 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Poem from "./Poem.js"
 
-function UserPoems() {
-    const navigate = useNavigate();
-    const [formData, setFormData] = useState({});
-    const [errors, setErrors] = useState([]);
+function UserPoems({user}) {
     const [userPoems, setUserPoems] = useState([])
 
-    console.log(userPoems)
+    useEffect(() => {
+        async function goGetEm() {
+            await fetch(`/users/${user.id}`)
+                .then((p) => p.json())
+                .then((p) => {
+                    setUserPoems(p.poems)
+                })
+        }
+        goGetEm()
+    }, [user.id])
 
     return(
         <>
-        {userPoems===[]? 
+        {userPoems.length>0? 
             <div>
-                <h1>here are your poems</h1>
+                <h1>{user.name}'s Submitted Poems</h1>
+                <h2>Feel free to post another one <Link to="/poem/new">here.</Link></h2>
+                {userPoems.map((poem) => (
+                    <Poem key={poem.id} poem={poem} edit={true}/>
+                ))}
             </div>
         :
             <div>

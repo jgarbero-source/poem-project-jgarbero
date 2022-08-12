@@ -27,6 +27,11 @@ function NewCommentForm() {
         setFormData({ ...formData, [name]: value });
     }
 
+    function goBack(e) {
+        e.preventDefault();
+        navigate(`/poems`);
+      }
+
     function handleSubmit(e){
         e.preventDefault()
         fetch(`/comments`, {
@@ -68,6 +73,7 @@ function NewCommentForm() {
                     </textarea>
                 </label>
                 <button>Leave Comment</button>
+                <button onClick={e=>goBack(e)}>Back</button>
             </form>
         </div>
     )

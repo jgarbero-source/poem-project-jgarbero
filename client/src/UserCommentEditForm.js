@@ -17,6 +17,11 @@ function UserCommentEditForm({comment}) {
     start()
     }, [])
 
+    function goBack(e) {
+      e.preventDefault();
+      navigate(`/user/comments`);
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
         fetch(`/comments/${location.state.comment.comment.id}`, {
@@ -32,7 +37,7 @@ function UserCommentEditForm({comment}) {
             c.json().then((comment) => 
             {
               console.log(comment)
-              navigate(`/user`);
+              navigate(`/user/comments`);
             })
           } else {
             c.json().then(json => setErrors(Object.entries(json.errors)))
@@ -61,6 +66,7 @@ function UserCommentEditForm({comment}) {
                     />
                 </label>
                 <button>Save edit</button>
+                <button onClick={e=>goBack(e)}>Back</button>
             </form>
         </div>
     )

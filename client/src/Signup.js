@@ -38,6 +38,7 @@ function Signup() {
         .then(res => {
             if(res.ok){
                 res.json().then(user => {
+                    console.log(user)
                     navigate(`/login`)
                 })
             } else {
