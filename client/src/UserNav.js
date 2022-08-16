@@ -15,11 +15,17 @@ function UserNav({user}) {
                     {user.name}'s Poems
                 </button>
             </NavLink>
+            <NavLink to="/user/favorites">
+                <button>
+                    {user.name}'s Favorite Poems
+                </button>
+            </NavLink>
             <NavLink to="/user/comments">
                 <button>
                     {user.name}'s Comments
                 </button>
             </NavLink>
+
         </nav>
     )
 }

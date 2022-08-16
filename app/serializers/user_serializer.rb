@@ -3,4 +3,7 @@ class UserSerializer < ActiveModel::Serializer
 
   has_many :comments
   has_many :poems
+  has_many :favorites
+  has_many :fav_poems, through: :favorites
+
 end

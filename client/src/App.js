@@ -14,6 +14,7 @@ import UserCommentEditForm from "./UserCommentEditForm"
 import UserPoems from "./UserPoems.js"
 import WritePoem from "./WritePoem.js"
 import UserPoemEditForm from './UserPoemEditForm';
+import UserFavorites from './UserFavorites';
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, NavLink, BrowserRouter } from "react-router-dom";
 
@@ -73,6 +74,7 @@ function App() {
         <Route path="/user/poems" element={<UserPoems user={user}/>}/>
         <Route path="/poem/new" element={<WritePoem user={user}/>}/>
         <Route path="/poem/edit" element={<UserPoemEditForm user={user}/>}/>
+        <Route path="/user/favorites" element={<UserFavorites user={user} setUser={setUser}/>}/>
       </Routes>
 
     </div>

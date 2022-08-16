@@ -1,12 +1,30 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Comment from "./Comment.js"
 import { Link, useNavigate } from "react-router-dom";
 
 function Poem({ poem, user, edit }) {
     const [showComments, setShowComments] = useState(false)
     const [errors, setErrors] = useState([])
+    const [formData, setFormData] = useState({})
     const { title, author, lines, linecount, comments } = poem
     const navigate = useNavigate()
+
+    useEffect(() => {
+        let starterFormData = {
+            like: false,
+            fav_user_id: null,
+            fav_poem_id: null
+        }
+        setFormData(starterFormData)
+    }, [])
+
+    function newFavorite() {
+        let toSend = formData
+        toSend.like = !toSend.like
+        toSend.fav_user_id = user.id
+        toSend.fav_poem_id = poem.id
+        return toSend
+    }
 
     function handleComments(){
         setShowComments(!showComments)
@@ -30,6 +48,28 @@ function Poem({ poem, user, edit }) {
         })
     }
 
+    function handleFavorite(e) {
+        e.preventDefault();
+        fetch(`/favorites`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newFavorite())
+        })
+    //     .then(f => {
+    //         if (f.ok) {
+    //             f.json().then((favorite) => {
+    //                 console.log(favorite)
+    //             });
+    //         } else {
+    //             console.log("Didn't work!")
+    //         }
+    //     }
+    // )
+
+    }
+
     return(
         <div>
         <ul>
@@ -46,6 +86,7 @@ function Poem({ poem, user, edit }) {
                     {comments.map(comment => <Comment key={comment.id} comment={comment} />)}
                 </div> : null }
             {user ? <button><Link to="/comments/new" state={{poem: {poem}, user: {user}}}>Add a Comment</Link></button> : null}
+            {user ? <button onClick={handleFavorite}>Favorite</button> : null }
         </ul>
         {edit?
         <>

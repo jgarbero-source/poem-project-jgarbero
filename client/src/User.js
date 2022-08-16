@@ -1,5 +1,5 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function User({ user, deleteUser }) {
     const [errors, setErrors] = useState(false)
