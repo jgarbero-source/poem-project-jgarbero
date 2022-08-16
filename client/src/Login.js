@@ -55,7 +55,7 @@ function Login({ handleLogin }) {
                 </input>
                 <input
                     placeholder="Password"
-                    type="text"
+                    type="password"
                     name="password"
                     value={password}
                     onChange={handleChange}

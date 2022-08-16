@@ -15,7 +15,7 @@ function User({ user, deleteUser }) {
         .then(res => {
             if(res.ok){
                 deleteUser(params.id)
-                navigate('/')
+                navigate("/")
             } else {
                 res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
             }

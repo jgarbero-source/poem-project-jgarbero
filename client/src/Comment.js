@@ -9,10 +9,16 @@ function Comment({comment}) {
         .then(r => setThisUser(r))
     },[])
 
+    console.log(comment)
+
     return(
         <>
-            <li>{comment.content}</li>
-            <small>- {thisUser.name}</small>
+
+            <div>
+                <li>{comment.content}</li>
+                <small>- {thisUser.name}</small>
+            </div>
+
         </>
     )
 }

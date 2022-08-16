@@ -1,10 +1,13 @@
 import {useEffect, useState} from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import Poem from "./Poem.js"
+import Comment from "./Comment.js";
 
 function Favorite({ favorite, user }) {
-    const [showComments, setShowComments] = useState([])
+    const [showComments, setShowComments] = useState(false)
+    const [errors, setErrors] = useState([])
     const navigate = useNavigate()
-    const { poem, id } = favorite
+    const { poem, id, comments } = favorite
 
     function handleUnfavorite() {
         console.log("click!")
@@ -16,11 +19,17 @@ function Favorite({ favorite, user }) {
         })
         .then(p => {
             if(p.ok) {
-                navigate(`/user/favorites`)
+                navigate(`/user`)
             } else {
-                // p.json().then(json => setErrors(Object.entries(json.errors)))
+                p.json().then(json => setErrors(Object.entries(json.errors)))
             }
         })
+    }
+
+    console.log(comments)
+
+    function handleComments(){
+        setShowComments(!showComments)
     }
 
     return(
@@ -32,6 +41,17 @@ function Favorite({ favorite, user }) {
                 <ul>{line}</ul>))}</p>
             <small>Linecount: {poem.linecount}</small>
             <br />
+            <button onClick={handleComments}>{showComments? "Hide Comments" : "Show Comments" }</button>
+            {showComments? 
+                <div>
+                    {comments.length>0?
+                        <div>
+                            {comments.map(comment => <Comment key={comment.id} comment={comment} />)}
+                        </div> : <p>There are no comments for this poem yet.</p>
+                    }
+                </div> : null }
+            <br />
+            {user ? <button><Link to="/comments/new" state={{poem: {poem}, user: {user}}}>Add a Comment</Link></button> : null}
             <button onClick={handleUnfavorite}>Unfavorite</button>
             </ul>
         </div>

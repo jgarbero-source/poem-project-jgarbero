@@ -1,27 +1,12 @@
 import { useEffect, useState } from "react";
 import {useNavigate, useLocation, Link} from 'react-router-dom';
 
-function UserCom({comment, poems, user}) {
-    const [thesePoems, setThesePoems] = useState(poems)
-    const [thisComment, setThisComment] = useState(comment)
-    const [commentedPoems, setCommentedPoems] = useState(null)
+function UserCom({comment}) {
     const [errors, setErrors] = useState([])
     const navigate = useNavigate();
     const location = useLocation();
 
-    let commentedPoem
-
-    useEffect(() => {
-        setThesePoems(poems)
-        setThisComment(comment)
-        thesePoems.forEach(poem => {
-            if(poem.id ===thisComment.poem_id){
-                setCommentedPoems(poem)
-            }
-        })
-    }, [])
-
-    console.log(commentedPoems)
+    const { poem, content } = comment
 
     function handleDelete() {
         fetch(`/comments/${comment.id}`, {
@@ -40,17 +25,14 @@ function UserCom({comment, poems, user}) {
         })
     }
 
-
-    // const userPoems = poems.filter(poem => poem.id === comment.poem_id)
-    // console.log(userPoems)
-
     return(
         <div>
             {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
-            <li>{comment.content}</li>
+            <li>{content}</li>
+            <small> - Commented on: {poem.title} by {poem.author}</small>
+            <br />
             <button><Link to="/user/comments/:id" state={{comment: {comment}}}>Edit Comment</Link></button>
             <button onClick={handleDelete}>Delete Comment</button>
-            {/* {commentedPoems? <small>commented on "{commentedPoems.title}"</small>:null} */}
         </div>
     )
 }

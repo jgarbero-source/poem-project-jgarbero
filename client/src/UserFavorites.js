@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Favorite from "./Favorite.js"
-import Poem from "./Poem.js"
 
 function UserFavorites({user, setUser}) {
-    //map through favorites and send down the poem that way
-
-
     
     useEffect(() => {
         fetch(`/users/${user.id}`).then((response) => {
@@ -22,14 +18,14 @@ function UserFavorites({user, setUser}) {
       }, []);
 
     const { favorites } = user
-
-
+    console.log(favorites)
 
     return(
         <div>
 
         {favorites.length>0? 
         <div>
+        <br />
         {
             favorites.map(favorite => (
                 <Favorite key={favorite.id} favorite={favorite} edit={true} user={user} setUser={setUser}/>

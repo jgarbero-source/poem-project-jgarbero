@@ -40,22 +40,23 @@ require 'rest-client'
 User.destroy_all
 Poem.destroy_all
 Comment.destroy_all
+Favorite.destroy_all
 
 puts "Creating users..."
 
 User.create(
     name: "John Garbero",
     email: "john.garbero.itb@gmail.com",
-    username: "jgarbero",
-    password: "123",
-    bio: "The coolest guy around."
+    username: "John",
+    password: "123456",
+    bio: "the coolest guy around"
 )
 
 User.create(
     name: "Bayonetta",
     email: "bayonetta@gmail.com",
     username: "witch",
-    password: "witch",
+    password: "witches",
     bio: "don't fuck with a witch"
 )
 
@@ -137,12 +138,12 @@ Poem.create(
         "The size of it made us all laugh.",
         "I peeled it and shared it with Robert and Dave--",
         "They got quarters and I had a half",
-        "",
+        "--",
         "And that orange, it made me so happy,",
         "As ordinary things often do",
         "Just lately. The shopping. A walk in the park.",
         "This is peace and contentment. It's new.",
-        "",
+        "--",
         "The rest of the day was quite easy.",
         "I did all the jobs on my list",
         "And I enjoyed them and had some time over.",
@@ -195,6 +196,165 @@ Poem.create(
     ],
     linecount: 6,
     user_id: 2
+)
+
+Poem.create(
+    title: "Written on the Body",
+    author: "Jeannette Winterson",
+    lines: [
+        "August. We were arguing. You want love to",
+        "be like this every day don't you? 92 degrees",
+        "even in the shade."
+    ],
+    linecount: 3,
+    user_id: 4
+)
+
+Poem.create(
+    title: "Cinque",
+    author: "Anna Akhmatova",
+    lines: [
+        "What was in our",
+        "stars",
+        "That destined us for",
+        "sorrow?"
+    ],
+    linecount: 4,
+    user_id: 1
+)
+
+Poem.create(
+    title: "The Locked Tomb, #2",
+    author: "Tamsyn Muir",
+    lines: [
+        "But when she was scared, she",
+        "was a child again, and she was",
+        "more afraid of being a child again",
+        "than anything else in her life."
+    ],
+    linecount: 4,
+    user_id: 2
+)
+
+Poem.create(
+    title: "Blink",
+    author: "Slow Meadow",
+    lines: [
+        "The permanance of nature is seemingly paradoxical.",
+        "While its constituents live and die, it, itself, lives on.",
+        "With the advent of civilization, many have deluded themselves",
+        "in thinking that they are separate from that which has borne life unto them.",
+        "Societies, along with the ideologies that shape them,",
+        "materialize and crumble in the blink of an existential eye."
+    ],
+    linecount: 6,
+    user_id: 1
+)
+
+Poem.create(
+    title: "Happiness",
+    author: "Eluvium",
+    lines: [
+        "If I could push dark thoughts away",
+        "If I pretend the word is safe",
+        "I would surely hide my eyes",
+        "And hope you realise",
+        "The water boils most of the day",
+        "We walk on snow, forget our way",
+        "I'll shut up the blinds at night,",
+        "Pull the blankets tight",
+        "Dreaming pleads every day"
+    ],
+    linecount: 9,
+    user_id: 1
+)
+
+Poem.create(
+    title: "Holy Wild",
+    author: "Gwen Benaway",
+    lines: [
+        "I have never been allowed to be holy",
+        "I have never been forgiven for wanting."
+    ],
+    linecount: 2,
+    user_id: 2
+)
+
+Poem.create(
+    title: "The Defining Moment",
+    author: "Beau Taplin",
+    lines: [
+        "You were an unexpected surprise",
+        "The defining moment. The collision of stars",
+        "that slammed into me hard and sent my neat",
+        "little world plummeting into the ocean.",
+        "I never expected it to be you, you know?",
+        "But it is you. It's all you. And now there's no",
+        "turning back."
+    ],
+    linecount: 7,
+    user_id: 3
+)
+
+Poem.create(
+    title: "Learning From Trees",
+    author: "Unknown",
+    lines: [
+        "If we could",
+        "like the trees,",
+        "practice dying,",
+        "do it every year",
+        "just as something we do--",
+        "like going on vacation",
+        "or celebrating birthdays,",
+        "it would become",
+        "as easy a part of us",
+        "as our hair or clothing.",
+        "--",
+        "Someone would show us how",
+        "to lie down and fade away",
+        "as if in deepest meditation,",
+        "and we would learn",
+        "about the fine dark emptiness",
+        "both knowing it and not knowing it,",
+        "and coming back would be irrelevant.",
+        "--",
+        "Whatever it is the trees know",
+        "when they stand undone,",
+        "surprisingly intricate,",
+        "we need to know also",
+        "so we can allow",
+        "that last thing",
+        "to happen to us",
+        "as if it were only",
+        "any ordinary thing.",
+        "--",
+        "leaves and lives",
+        "falling away,",
+        "the spirit, complex,",
+        "waiting in the fine darkness",
+        "to learn which way",
+        "it will go."
+    ],
+    linecount: 35,
+    user_id: 3
+)
+
+Poem.create(
+    title: "Unknown",
+    author: "Unknown",
+    lines: [
+        "And he is--Oh, well! He is just himself,",
+        "and I miss him, and miss him, and miss him.",
+        "The whole world seems empty and aching.",
+        "I hate the moonlight because it's beautiful",
+        "and he isn't here to see it with me.",
+        "But maybe you've loved somebody, too, and you know?",
+        "If you have, I don't need to explain;",
+        "If you haven't, I can't explain."
+    ],
+    linecount: 8,
+    user_id: 4
 )
 
 puts "Writing reviews..."

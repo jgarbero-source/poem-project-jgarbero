@@ -4,10 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 
 function Poem({ poem, user, edit }) {
     const [showComments, setShowComments] = useState(false)
+    const [noComments, setNoComments] = useState(true)
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({})
     const { title, author, lines, linecount, comments } = poem
     const navigate = useNavigate()
+
+    console.log(comments)
 
     useEffect(() => {
         let starterFormData = {
@@ -28,7 +31,12 @@ function Poem({ poem, user, edit }) {
 
     function handleComments(){
         setShowComments(!showComments)
+        if (comments) {
+            setNoComments(!noComments)
+        }
     }
+
+
 
     function handleDelete(e){
         e.preventDefault();
@@ -83,7 +91,11 @@ function Poem({ poem, user, edit }) {
             <button onClick={handleComments}>{showComments? "Hide Comments" : "Show Comments" }</button>
             {showComments? 
                 <div>
-                    {comments.map(comment => <Comment key={comment.id} comment={comment} />)}
+                    {comments.length>0?
+                        <div>
+                            {comments.map(comment => <Comment key={comment.id} comment={comment} />)}
+                        </div> : <p>There are no comments for this poem yet.</p>
+                    }
                 </div> : null }
             {user ? <button><Link to="/comments/new" state={{poem: {poem}, user: {user}}}>Add a Comment</Link></button> : null}
             {user ? <button onClick={handleFavorite}>Favorite</button> : null }
