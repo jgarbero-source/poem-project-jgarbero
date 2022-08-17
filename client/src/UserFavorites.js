@@ -18,7 +18,6 @@ function UserFavorites({user, setUser}) {
       }, []);
 
     const { favorites } = user
-    console.log(favorites)
 
     return(
         <div>

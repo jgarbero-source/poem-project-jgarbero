@@ -7,10 +7,10 @@ function Poem({ poem, user, edit }) {
     const [noComments, setNoComments] = useState(true)
     const [errors, setErrors] = useState([])
     const [formData, setFormData] = useState({})
-    const { title, author, lines, linecount, comments } = poem
+    const { title, author, lines, linecount, comments, poem_user } = poem
     const navigate = useNavigate()
 
-    console.log(comments)
+    console.log(poem_user)
 
     useEffect(() => {
         let starterFormData = {
@@ -65,17 +65,6 @@ function Poem({ poem, user, edit }) {
             },
             body: JSON.stringify(newFavorite())
         })
-    //     .then(f => {
-    //         if (f.ok) {
-    //             f.json().then((favorite) => {
-    //                 console.log(favorite)
-    //             });
-    //         } else {
-    //             console.log("Didn't work!")
-    //         }
-    //     }
-    // )
-
     }
 
     return(
@@ -87,6 +76,9 @@ function Poem({ poem, user, edit }) {
             <p>{lines?.map((line) => (
                 <ul>{line}</ul>))}</p>
             <small>Linecount: {linecount}</small>
+            <br />
+            {poem_user? 
+            <small>Posted by: {poem_user.name}</small> : null }
             <br />
             <button onClick={handleComments}>{showComments? "Hide Comments" : "Show Comments" }</button>
             {showComments? 

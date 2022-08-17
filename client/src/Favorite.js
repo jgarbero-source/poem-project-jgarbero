@@ -7,7 +7,7 @@ function Favorite({ favorite, user }) {
     const [showComments, setShowComments] = useState(false)
     const [errors, setErrors] = useState([])
     const navigate = useNavigate()
-    const { poem, id, comments } = favorite
+    const { poem, id, comments, favorite_user } = favorite
 
     function handleUnfavorite() {
         console.log("click!")
@@ -26,7 +26,7 @@ function Favorite({ favorite, user }) {
         })
     }
 
-    console.log(comments)
+    console.log(favorite)
 
     function handleComments(){
         setShowComments(!showComments)
@@ -40,6 +40,9 @@ function Favorite({ favorite, user }) {
             <p>{poem.lines?.map(line=>(
                 <ul>{line}</ul>))}</p>
             <small>Linecount: {poem.linecount}</small>
+            <br />
+            {favorite_user? 
+            <small>Posted by: {favorite_user.name}</small> : null }
             <br />
             <button onClick={handleComments}>{showComments? "Hide Comments" : "Show Comments" }</button>
             {showComments? 
