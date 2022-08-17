@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FormControl, Input, Button } from '@mui/material';
+import { spacing } from '@mui/system';
 
 function UserEditForm({ user, updateUser }) {
     const [errors, setErrors] = useState([])
@@ -47,29 +49,32 @@ function UserEditForm({ user, updateUser }) {
 
     return(
         <div>
+            <h2>Edit your profile here:</h2>
             <form onSubmit={handleSubmit}>
-            <label>
+            <FormControl>
+                <label>
                 Name:
-                <input type="text" name="name" placeholder={name} value={formData.name} onChange={handleChange} />
-            </label>
+                    <Input sx={{ml:2}} type="text" name="name" placeholder={name} value={formData.name} onChange={handleChange} />
+                </label>
             <label>
                 Email:
-                <input type="text" name="email" placeholder={email} value={formData.email} onChange={handleChange} />
+                <Input sx={{ml:2}} type="text" name="email" placeholder={email} value={formData.email} onChange={handleChange} />
             </label>
             <label>
                 Password:
-                <input type="password" name="password" placeholder={"Choose a new password carefully..."} value={formData.password} onChange={handleChange} />
+                <Input sx={{ml:2}} type="password" name="password" placeholder={"Choose a new password"} value={formData.password} onChange={handleChange} />
             </label>
             <label>
                 Username:
-                <input type="text" name="username" placeholder={username} value={formData.username} onChange={handleChange} />
+                <Input sx={{ml:2}} type="text" name="username" placeholder={username} value={formData.username} onChange={handleChange} />
             </label>
             <label>
                 Bio:
-                <textarea type="text" name="bio" placeholder={bio} value={formData.bio} onChange={handleChange} />
+                <Input sx={{ml:2}} type="text" name="bio" placeholder={bio} value={formData.bio} onChange={handleChange} minRows="3" multiline={true} />
             </label>
-            <button>Save</button>
-            <button onClick={e=>goBack(e)}>Back</button>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Save</Button>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={e=>goBack(e)}>Back</Button>
+            </FormControl>
             </form>
         </div>
     )

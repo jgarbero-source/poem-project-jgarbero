@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {useNavigate, useLocation, Link} from 'react-router-dom';
+import { Button } from "@mui/material";
 
 function UserCom({comment}) {
     const [errors, setErrors] = useState([])
@@ -31,8 +32,8 @@ function UserCom({comment}) {
             <li>{content}</li>
             <small> - Commented on: {poem.title} by {poem.author}</small>
             <br />
-            <button><Link to="/user/comments/:id" state={{comment: {comment}}}>Edit Comment</Link></button>
-            <button onClick={handleDelete}>Delete Comment</button>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}><Link to="/user/comments/:id" state={{comment: {comment}, poem: {poem}}}>Edit Comment</Link></Button>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleDelete}>Delete Comment</Button>
         </div>
     )
 }

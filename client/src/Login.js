@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { FormControl, Input, Button } from '@mui/material';
 
 function Login({ handleLogin }) {
     const [formData, setFormData] = useState({
@@ -45,25 +46,23 @@ function Login({ handleLogin }) {
         <div>
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
-                <input
+            <FormControl>
+                <Input
                     placeholder="Username"
                     type="text"
                     name="username"
                     value={username}
                     onChange={handleChange}
-                >
-                </input>
-                <input
+                />
+                <Input
                     placeholder="Password"
                     type="password"
                     name="password"
                     value={password}
                     onChange={handleChange}
-                >
-                </input>
-                <button type="submit">
-                    Login
-                </button>
+                />
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Login</Button>
+            </FormControl>
             </form>
             {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
         </div>

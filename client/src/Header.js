@@ -1,4 +1,5 @@
 import { useNavigate, Link } from "react-router-dom";
+import { Button, ThemeProvider, Typography } from "@mui/material";
 
 
 
@@ -16,15 +17,16 @@ function Header({ user, doLogout }) {
     return(
         <>
         {user ? null: <Link to="signup">
-        <button>Signup</button></Link>}
+        <Button variant="outlined" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Signup</Button></Link>}
         {user ? (
             <div>
                 <h2>Welcome, {user.name}!</h2>
-                <button onClick={handleLogout}>Logout</button>
+                <Button variant="outlined" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleLogout}>Logout
+                </Button>
             </div>
         ) : (
             <Link to="/login">
-                <button>Login</button>
+                <Button variant="outlined" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Login</Button>
             </Link>
         )}
         </>

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { FormControl, Input, Button } from '@mui/material';
+import { spacing } from '@mui/system';
+
 
 function UserPoemEditForm({user}) {
     const navigate = useNavigate();
@@ -65,9 +68,11 @@ function UserPoemEditForm({user}) {
             <h2>Update your poem here:</h2>
             {errors ? errors.map((e) => <div key={e[0]}>{e[1]}</div>) : null}
             <form onSubmit={handleSubmit}>
+            <FormControl>
                 <label>
-                    Title:
-                    <input
+                    Title: 
+                    <Input
+                    sx={{ml:2}}
                     type="text"
                     name="title"
                     placeholder="Poem Title"
@@ -79,7 +84,8 @@ function UserPoemEditForm({user}) {
                 <br />
                 <label>
                     Author:
-                    <input
+                    <Input
+                    sx={{ml:2}}
                     type="text"
                     name="author"
                     placeholder="Author of Poem"
@@ -90,11 +96,15 @@ function UserPoemEditForm({user}) {
                 <br />
                 <br />
                 <h3>NOTE: Please indicate line separation with the '/' symbol in your poem.</h3>
+                <br />
                 <label>
                     Poem Contents:
-                    <textarea
+                    <Input
+                    sx={{ml:2}}
                     name="lines"
                     type="text"
+                    minRows="3"
+                    multiline={true}
                     placeholder="Write Poem Here"
                     value={formData.lines}
                     onChange={handleChange}
@@ -102,8 +112,9 @@ function UserPoemEditForm({user}) {
                 </label>
                 <br />
                 <br />
-                <button>Update Poem</button>
-                <button onClick={e=>goBack(e)}>Back</button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Update Poem</Button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={e=>goBack(e)}>Back</Button>
+            </FormControl>
             </form>
         </div>
     )

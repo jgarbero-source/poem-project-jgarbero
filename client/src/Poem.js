@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
 import Comment from "./Comment.js"
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function Poem({ poem, user, edit }) {
     const [showComments, setShowComments] = useState(false)
@@ -9,8 +11,6 @@ function Poem({ poem, user, edit }) {
     const [formData, setFormData] = useState({})
     const { title, author, lines, linecount, comments, poem_user } = poem
     const navigate = useNavigate()
-
-    console.log(poem_user)
 
     useEffect(() => {
         let starterFormData = {
@@ -35,8 +35,6 @@ function Poem({ poem, user, edit }) {
             setNoComments(!noComments)
         }
     }
-
-
 
     function handleDelete(e){
         e.preventDefault();
@@ -80,7 +78,7 @@ function Poem({ poem, user, edit }) {
             {poem_user? 
             <small>Posted by: {poem_user.name}</small> : null }
             <br />
-            <button onClick={handleComments}>{showComments? "Hide Comments" : "Show Comments" }</button>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleComments}>{showComments? "Hide Comments" : "Show Comments" }</Button>
             {showComments? 
                 <div>
                     {comments.length>0?
@@ -89,15 +87,15 @@ function Poem({ poem, user, edit }) {
                         </div> : <p>There are no comments for this poem yet.</p>
                     }
                 </div> : null }
-            {user ? <button><Link to="/comments/new" state={{poem: {poem}, user: {user}}}>Add a Comment</Link></button> : null}
-            {user ? <button onClick={handleFavorite}>Favorite</button> : null }
+            {user ? <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}><Link to="/comments/new" state={{poem: {poem}, user: {user}}}>Add a Comment</Link></Button> : null}
+            {user ? <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleFavorite} endIcon={<FavoriteIcon/>}>Favorite</Button> : null }
+            {edit?
+            <>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}><Link to="/poem/edit" state={{poem:{poem}}}>Edit Poem</Link></Button> 
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleDelete}>Delete Poem</Button>
+            </> 
+            : null}
         </ul>
-        {edit?
-        <>
-        <button><Link to="/poem/edit" state={{poem:{poem}}}>Edit Poem</Link></button> 
-        <button onClick={handleDelete}>Delete Poem</button>
-        </> 
-        : null}
         </div>
     )
 }

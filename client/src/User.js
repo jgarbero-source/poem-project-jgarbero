@@ -1,5 +1,6 @@
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Button } from '@mui/material'
 
 function User({ user, deleteUser }) {
     const [errors, setErrors] = useState(false)
@@ -35,8 +36,8 @@ function User({ user, deleteUser }) {
                 <p>Email: {email}</p>
                 <p>Bio: {bio}</p>
             </ul>
-            <button><Link to={'/user/edit'}>Edit Profile</Link></button>
-            <button onClick={handleDelete}>Delete Profile</button>
+            <Button variant="outlined" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}><Link to={'/user/edit'}>Edit Profile</Link></Button>
+            <Button variant="outlined" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleDelete}>Delete Profile</Button>
             </div>
         } else {
             userInfo = <h1>No user is logged in.</h1>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate} from 'react-router-dom'
+import { FormControl, Input, Button } from '@mui/material';
 
 function Signup() {
 
@@ -22,13 +23,6 @@ function Signup() {
 
     function handleSubmit(e) {
         e.preventDefault()
-        // const user = {
-        //     name, 
-        //     email,
-        //     username,
-        //     email,
-        //     bio
-        // }
 
         fetch('/users',{
             method: "POST",
@@ -58,48 +52,46 @@ function Signup() {
         <>
         <h2>Sign up</h2>
         <form onSubmit={handleSubmit}>
-            <input 
+        <FormControl>
+            <Input 
                 placeholder="Name"
                 type="text"
                 name="name"
                 value={name}
                 onChange={handleChange}
             />
-            <input
+            <Input
                 placeholder="Email"
                 type="text"
                 name="email"
                 value={email}
                 onChange={handleChange}
             />
-            <input
+            <Input
                 placeholder="Username"
                 type='text'
                 name='username' 
                 value={username} 
                 onChange={handleChange}
             />
-            <input
+            <Input
                 placeholder="Password" 
                 type='password' 
                 name='password' 
                 value={password} 
                 onChange={handleChange}
             />
-            <textarea 
+            <Input 
                 placeholder="Bio"
                 type="text"
-                rows="4"
-                cols="25"
+                minRows="3"
+                multiline={true}
                 name='bio' 
                 value={bio} 
                 onChange={handleChange}
             />
-            <button
-                type="submit"
-            >
-                Signup! 
-            </button>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Signup!</Button>
+        </FormControl>
         </form>
         {errors? errors.map(error => <div> {error[0]} {error[1]} </div>) : null }
         </>

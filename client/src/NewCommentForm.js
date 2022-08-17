@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react'
 import { useNavigate, useLocation } from "react-router-dom";
-import Poem from "./Poem.js"
+import { FormControl, Input, Button } from '@mui/material';
+import { spacing } from '@mui/system';
 
 function NewCommentForm() {
     const navigate = useNavigate();
@@ -61,19 +62,23 @@ function NewCommentForm() {
             <small>Linecount: {location.state.poem.poem.linecount}</small>
             {errors ? errors.map((e) => <div key={e[0]}>{e[1]}</div>) : null}
             <form onSubmit={handleSubmit}>
+            <FormControl>
                 <label>
                     Comment:
-                    <textarea
+                    <Input
+                        sx={{ml:2}}
                         type="text"
                         name="content"
                         placeholder="Comment here"
+                        minRows="3"
+                        multiline={true}
                         value={formData.content}
                         onChange={handleChange}
-                    >
-                    </textarea>
+                    />
                 </label>
-                <button>Leave Comment</button>
-                <button onClick={e=>goBack(e)}>Back</button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Leave Comment</Button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={e=>goBack(e)}>Back</Button>
+            </FormControl>
             </form>
         </div>
     )

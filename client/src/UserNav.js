@@ -1,29 +1,30 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Button } from "@mui/material";
 
 function UserNav({user}) {
 
     return(
         <nav>
             <NavLink to="/user">
-                <button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>
                     {user.name}'s Info
-                </button>
+                </Button>
             </NavLink>
             <NavLink to="/user/poems">
-                <button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>
                     {user.name}'s Poems
-                </button>
+                </Button>
             </NavLink>
             <NavLink to="/user/favorites">
-                <button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>
                     {user.name}'s Favorite Poems
-                </button>
+                </Button>
             </NavLink>
             <NavLink to="/user/comments">
-                <button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>
                     {user.name}'s Comments
-                </button>
+                </Button>
             </NavLink>
 
         </nav>

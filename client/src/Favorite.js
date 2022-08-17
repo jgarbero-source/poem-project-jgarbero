@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import Poem from "./Poem.js"
+import { Button } from "@mui/material";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Comment from "./Comment.js";
 
 function Favorite({ favorite, user }) {
@@ -44,7 +45,7 @@ function Favorite({ favorite, user }) {
             {favorite_user? 
             <small>Posted by: {favorite_user.name}</small> : null }
             <br />
-            <button onClick={handleComments}>{showComments? "Hide Comments" : "Show Comments" }</button>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleComments}>{showComments? "Hide Comments" : "Show Comments" }</Button>
             {showComments? 
                 <div>
                     {comments.length>0?
@@ -54,8 +55,8 @@ function Favorite({ favorite, user }) {
                     }
                 </div> : null }
             <br />
-            {user ? <button><Link to="/comments/new" state={{poem: {poem}, user: {user}}}>Add a Comment</Link></button> : null}
-            <button onClick={handleUnfavorite}>Unfavorite</button>
+            {user ? <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}><Link to="/comments/new" state={{poem: {poem}, user: {user}}}>Add a Comment</Link></Button> : null}
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleUnfavorite} endIcon={<FavoriteBorderIcon/>}>Unfavorite</Button>
             </ul>
         </div>
     )

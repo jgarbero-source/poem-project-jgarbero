@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { FormControl, Input, Button } from '@mui/material';
+import { spacing } from '@mui/system';
 
 function UserCommentEditForm({comment}) {
     const navigate = useNavigate();
@@ -52,21 +54,29 @@ function UserCommentEditForm({comment}) {
 
     return(
         <div>
+            <h2>Edit your comment on {location.state.poem.poem.title} by {location.state.poem.poem.author}</h2>
+            <p>{location.state.poem.poem.lines?.map((line) => (
+                <ul>{line}</ul>))}</p>
+            <small>Linecount: {location.state.poem.poem.linecount}</small>
             {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
-            <h2>Hey there!</h2>
             <form onSubmit={handleSubmit}>
+            <FormControl>
                 <label>
                     Edit comment here:
-                    <textarea
+                    <Input
+                        sx={{ml:2}}
                         type="text"
                         name="content"
+                        minRows="3"
+                        multiline={true}
                         placeholder={formData.content}
                         value={formData.content}
                         onChange={handleChange}
                     />
                 </label>
-                <button>Save edit</button>
-                <button onClick={e=>goBack(e)}>Back</button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Save edit</Button>
+                <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={e=>goBack(e)}>Back</Button>
+              </FormControl>
             </form>
         </div>
     )
