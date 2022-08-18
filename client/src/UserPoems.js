@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Poem from "./Poem.js"
+import { Grid } from "@mui/material";
 
 function UserPoems({user}) {
     const [userPoems, setUserPoems] = useState([])
@@ -22,9 +23,13 @@ function UserPoems({user}) {
             <div>
                 <h1>{user.name}'s Submitted Poems</h1>
                 <h2>Feel free to post another one <Link to="/poem/new">here.</Link></h2>
-                {userPoems.map((poem) => (
-                    <Poem key={poem.id} poem={poem} edit={true}/>
-                ))}
+                <Grid container spacing={2} justifyContent="space-evenly" alignItems="center">
+                    {userPoems.map((poem) => (
+                        <Grid justifyContent="space-evenly" alignItems="center" item xs={6} key={poem.id}>
+                            <Poem key={poem.id} poem={poem} edit={true}/>
+                        </Grid>
+                    ))}
+                </Grid>
             </div>
         :
             <div>

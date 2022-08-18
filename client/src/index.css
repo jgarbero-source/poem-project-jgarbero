@@ -15,9 +15,9 @@ code {
     monospace;
 }
 
-ul {
+/* ul {
   text-align: left;
-}
+} */
 
 label {
   display: flex;

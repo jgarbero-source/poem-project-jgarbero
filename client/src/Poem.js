@@ -63,6 +63,13 @@ function Poem({ poem, user, edit }) {
             },
             body: JSON.stringify(newFavorite())
         })
+        .then(p => {
+            if(p.ok) {
+                navigate(`/user`)
+            } else {
+                p.json().then(json => setErrors(Object.entries(json.errors)))
+            }
+        })
     }
 
     return(

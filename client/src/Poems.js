@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Poem from "./Poem.js"
 import SearchBar from "./SearchBar.js";
+import { Grid } from "@mui/material";
 
 
 function Poems({ user }) {
@@ -23,10 +24,15 @@ function Poems({ user }) {
 
     return (
         <div>
-        <SearchBar handleSearch={handleSearch} />
-            {updatedPoemDisplay.map((poem) => (
-            <Poem key={poem.id} poem={poem} edit={false} user={user}/>
-            ))}
+            <h2>All Poems</h2>
+            <SearchBar handleSearch={handleSearch} />
+            <Grid container spacing={2} justifyContent="space-evenly" alignItems="center">
+                {updatedPoemDisplay.map((poem) => (
+                    <Grid justifyContent="space-evenly" alignItems="center" item xs={6} key={poem.id}>
+                        <Poem key={poem.id} poem={poem} edit={false} user={user}/>
+                    </Grid>
+                ))}
+            </Grid>
         </div>
     )
 
