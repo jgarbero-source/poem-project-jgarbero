@@ -24,8 +24,6 @@ function App() {
   const [user, setUser] = useState(null)
   const navigate = useNavigate();
 
-
-
   function handleLogin(user) {
     setUser(user);
   }
@@ -44,8 +42,6 @@ function App() {
     setUser(updatedUser)
   }
 
-
-
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
@@ -60,7 +56,6 @@ function App() {
 
   return (
     <div>
-      <h1>The Poetry App</h1>
       <Header user={user} doLogout={doLogout} />
       <NavBar />
       {user? <UserNav user={user}/> : null }

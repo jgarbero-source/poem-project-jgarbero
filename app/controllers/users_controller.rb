@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     end
 
     def me
-        render json: @current_user
+        render json: current_user
     end
 
     def show

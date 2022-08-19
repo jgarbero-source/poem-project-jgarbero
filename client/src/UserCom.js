@@ -2,29 +2,9 @@ import { useEffect, useState } from "react";
 import {useNavigate, useLocation, Link} from 'react-router-dom';
 import { Button } from "@mui/material";
 
-function UserCom({comment}) {
-    const [errors, setErrors] = useState([])
-    const navigate = useNavigate();
-    const location = useLocation();
+function UserCom({comment, handleDelete, errors}) {
 
     const { poem, content } = comment
-
-    function handleDelete() {
-        fetch(`/comments/${comment.id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            }
-        })
-        .then((c) => {
-            if (c.ok) {
-                navigate(`/user`)
-            } else {
-                c.json().then(json => setErrors(Object.entries(json.errors)))
-            }
-        })
-    }
 
     return(
         <div>

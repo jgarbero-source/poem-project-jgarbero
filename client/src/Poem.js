@@ -4,10 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function Poem({ poem, user, edit }) {
+function Poem({ poem, user, edit, handleDelete }) {
     const [showComments, setShowComments] = useState(false)
     const [noComments, setNoComments] = useState(true)
     const [errors, setErrors] = useState([])
+    const [favErrors, setFavErrors] = useState("")
     const [formData, setFormData] = useState({})
     const { title, author, lines, linecount, comments, poem_user } = poem
     const navigate = useNavigate()
@@ -36,24 +37,6 @@ function Poem({ poem, user, edit }) {
         }
     }
 
-    function handleDelete(e){
-        e.preventDefault();
-        fetch(`/poems/${poem.id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
-            }
-        })
-        .then(p => {
-            if(p.ok) {
-                navigate(`/user`)
-            } else {
-                p.json().then(json => setErrors(Object.entries(json.errors)))
-            }
-        })
-    }
-
     function handleFavorite(e) {
         e.preventDefault();
         fetch(`/favorites`, {
@@ -65,9 +48,9 @@ function Poem({ poem, user, edit }) {
         })
         .then(p => {
             if(p.ok) {
-                navigate(`/user`)
+                console.log("Favorite!")
             } else {
-                p.json().then(json => setErrors(Object.entries(json.errors)))
+                p.json().then(json => setFavErrors(json.error))
             }
         })
     }
@@ -76,6 +59,7 @@ function Poem({ poem, user, edit }) {
         <div>
         <ul>
         {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
+        {favErrors?<h4>{favErrors}</h4>:null}
             <h3>{title}</h3>
             <h4>{author}</h4>
             <p>{lines?.map((line) => (
@@ -99,7 +83,7 @@ function Poem({ poem, user, edit }) {
             {edit?
             <>
             <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}><Link to="/poem/edit" state={{poem:{poem}}}>Edit Poem</Link></Button> 
-            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleDelete}>Delete Poem</Button>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={() => handleDelete(poem.id)}>Delete Poem</Button>
             </> 
             : null}
         </ul>

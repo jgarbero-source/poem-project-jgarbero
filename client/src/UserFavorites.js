@@ -1,24 +1,51 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import Favorite from "./Favorite.js"
 import { Grid } from "@mui/material";
 
-function UserFavorites({user, setUser}) {
+function UserFavorites() {
+  const [user, setUser] = useState([])
+  const [favorites, setFavorites] = useState([])
+  const [errors, setErrors] = useState([])
+  const navigate = useNavigate()
     
     useEffect(() => {
-        fetch(`/users/${user.id}`).then((response) => {
+      async function getThem() {
+        await fetch(`/me`).then((response) => {
           if (response.ok) {
             response.json().then((client) => {
               setUser(client);
+              setFavorites(client.favorites)
             });
           } else {
             console.log("We're not rendering nothing pal");
           }
         });
-        
-      }, []);
+      }
+      getThem()
+    }, []);
 
-    const { favorites } = user
+    function deleteFavorite(id) {
+      setFavorites(current => current.filter(f => f.id !== id))
+    }
+
+    function handleUnfavorite(id) {
+      console.log("click!")
+      fetch(`/favorites/${id}`, {
+          method: "DELETE",
+          headers: {
+              "Content-Type": "application/json"
+          }
+      })
+      .then(p => {
+          if(p.ok) {
+              deleteFavorite(id)
+              navigate(`/user/favorites`)
+          } else {
+              p.json().then(json => setErrors(Object.entries(json.errors)))
+          }
+      })
+  }
 
     return(
         <div>
@@ -31,7 +58,7 @@ function UserFavorites({user, setUser}) {
           {
               favorites.map(favorite => (
                 <Grid justifyContent="space-evenly" alignItems="center" item xs={6} key={favorite.id}>
-                  <Favorite key={favorite.id} favorite={favorite} edit={true} user={user} setUser={setUser}/>
+                  <Favorite key={favorite.id} favorite={favorite} edit={true} user={user} setUser={setUser} handleUnfavorite={handleUnfavorite} errors={errors}/>
                 </Grid>
               ))
           }

@@ -5,8 +5,12 @@ class FavoritesController < ApplicationController
     end
 
     def create
-        favorite = Favorite.create!(fav_params)
-        render json: favorite, status: :created
+        favorite = Favorite.create(fav_params)
+        if favorite.valid?
+            render json: favorite, status: :created
+        else
+            render json: { error: "You cannot favorite a poem twice." }, status: :unprocessable_entity
+        end
     end
 
     def destroy

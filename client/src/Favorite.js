@@ -4,30 +4,9 @@ import { Button } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Comment from "./Comment.js";
 
-function Favorite({ favorite, user }) {
+function Favorite({ favorite, user, handleUnfavorite, errors }) {
     const [showComments, setShowComments] = useState(false)
-    const [errors, setErrors] = useState([])
-    const navigate = useNavigate()
     const { poem, id, comments, favorite_user } = favorite
-
-    function handleUnfavorite() {
-        console.log("click!")
-        fetch(`/favorites/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(p => {
-            if(p.ok) {
-                navigate(`/user`)
-            } else {
-                p.json().then(json => setErrors(Object.entries(json.errors)))
-            }
-        })
-    }
-
-    console.log(favorite)
 
     function handleComments(){
         setShowComments(!showComments)
@@ -36,6 +15,7 @@ function Favorite({ favorite, user }) {
     return(
         <div>
             <ul>
+            {errors?errors.map(e => <div key={e[0]}>{e[1]}</div>):null}
             <h3>{poem.title}</h3>
             <h4>{poem.author}</h4>
             <p>{poem.lines?.map(line=>(
@@ -56,7 +36,7 @@ function Favorite({ favorite, user }) {
                 </div> : null }
             <br />
             {user ? <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}><Link to="/comments/new" state={{poem: {poem}, user: {user}}}>Add a Comment</Link></Button> : null}
-            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={handleUnfavorite} endIcon={<FavoriteBorderIcon/>}>Unfavorite</Button>
+            <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}} onClick={() => handleUnfavorite(id)} endIcon={<FavoriteBorderIcon/>}>Unfavorite</Button>
             </ul>
         </div>
     )
