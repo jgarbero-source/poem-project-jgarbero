@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import AppBar from '@material-ui/core/AppBar';
+// import AppBar from '@material-ui/core/AppBar';
 
 
 
@@ -15,8 +15,8 @@ function Header({ user, doLogout }) {
     }
 
     return(
-        <AppBar>
-        <h1>The Poetry App</h1>
+        <>
+        <h1>Speaking in Poems</h1>
         {user ? null: <Link to="signup">
         <Button variant="outlined" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Signup</Button></Link>}
         {user ? (
@@ -30,7 +30,7 @@ function Header({ user, doLogout }) {
                 <Button variant="outlined" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>Login</Button>
             </Link>
         )}
-        </AppBar>
+        </>
     )
 
 }
