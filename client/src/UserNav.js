@@ -4,22 +4,8 @@ import { Button } from "@mui/material";
 
 function UserNav({user}) {
 
-    // const menuBtn = document.querySelector('.menu-btn')
-    // let menuOpen = false;
-    // menuBtn.addEventListener('click', () => {
-    //     if(!menuOpen) {
-    //         menuBtn.classList.add('open');
-    //         menuOpen = true;
-    //     } else {
-    //         menuBtn.classList.remove('open');
-    //         menuOpen = false;
-    //     }
-    // })
-
-
-
     return(
-        <nav>
+        <nav className="navBar">
             <NavLink to="/user">
                 <Button variant="outlined" type="submit" style={{color:"#000000", backgroundColor: "	#FFFFFF"}}>
                     {user.name}'s Info

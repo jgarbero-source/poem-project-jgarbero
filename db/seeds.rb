@@ -357,6 +357,489 @@ Poem.create(
     user_id: 4
 )
 
+Poem.create(
+    title: "Lenin",
+    author: "Langston Hughes",
+    lines: [
+        "Lenin walks around the world",
+        "Frontiers cannot bar him",
+        "Neither barracks nor barricades impede",
+        "Nor does barbed wire scar him.",
+        "--",
+        "Lenin walks around the world.",
+        "Black, brown, and white receive him.",
+        "Language is no barrier.",
+        "The strangest tongues believe him",
+        "--",
+        "Lenin walks around the world.",
+        "The sun sets like a scar",
+        "Between the darkness and the dawn",
+        "There rises a red star."
+    ],
+    linecount: 14,
+    user_id: 1
+)
+
+Poem.create(
+    title: "In Praise of Communism",
+    author: "Bertold Brecht",
+    lines: [
+        "It's sensible",
+        "anyone can understand it.",
+        "It's easy",
+        "You're not an exploiter",
+        "so you can grasp it.",
+        "It's a good thig for you,",
+        "find out more about it.",
+        "The stupid call it stupid",
+        "and the squalid call it squalid.",
+        "It is against squalor and",
+        "against stupidity.",
+        "the exploiters call it a crime",
+        "But we know:",
+        "it is the end of crime.",
+        "It is not madness, but",
+        "the end of madness.",
+        "It is not the riddle",
+        "But the solution.",
+        "It is the simple thing",
+        "So hard to achieve."
+    ],
+    linecount: 20,
+    user_id: 2
+)
+
+Poem.create(
+    title: "Osho--Untitled",
+    author: "Osho",
+    lines: [
+        "I don't think existence wants you",
+        "to be serious. I have not seen a",
+        "serious tree. I have not seen a",
+        "serious bird. I have not seen a",
+        "serious sunrise. I have not seen a",
+        "serious starry night. It seems they",
+        "are all laughing in their own ways,",
+        "dancing in their own ways. We may",
+        "not understand it, but there is a",
+        "subtle feeling that the whole",
+        "existence is a celebration."
+    ],
+    linecount: 11,
+    user_id: 3
+)
+
+Poem.create(
+    title: "Antilamentation",
+    author: "Dorianne Laux",
+    lines: [
+        "Regret nothing. Not the cruel novels you read",
+        "to the end just to find out who killed the cook.",
+        "Not the insipid moies that made you cry in the dark,",
+        "in spite of your intelligence, your sophistication.",
+        "Not the lover you left quivering in a hotel parking lot",
+        "the one you beat to the punchline, the door, or the one",
+        "who left you in your red dress and shoes, the ones",
+        "that crimped your toes, don't regret those.",
+        "Not the nights you called god names and cursed",
+        "your mother, sunk like a dog in the livingroom couch,",
+        "chewing your nails and crushed by loneliness.",
+        "You were meant to inhale those smoky nights",
+        "over a bottle of flat beer, to sweep stuck onion rings",
+        "across the dirty restaurant floor, to wear the frayed",
+        "coat with its loose butons, its pockets full of struck matches.",
+        "You've walked those streets a thousand ties and still",
+        "you end up here. Regret none of it, not one",
+        "of the wasted days you wanted to know nothing,",
+        "when the lights from teh carnival rides",
+        "were the only stars you believed in, loving them",
+        "for their uselessness, not wanting to be saved.",
+        "You've traveled this far on the back of every mistake,",
+        "ridden in dark-eyed and morose but calm as a house",
+        "after the TV set has been pitched out the upstairs",
+        "window. Harmless as a broken ax. Emptied",
+        "of expectation. Relax. Don't bother remembering",
+        "any of it. Let's stop here, under the lit sign",
+        "on the corner, and watch all the people walk by."
+    ],
+    linecount: 28,
+    user_id: 4
+)
+
+Poem.create(
+    title: "The CryptoNaturalist--Untitled",
+    author: "The CryptoNaturalist",
+    lines: [
+        "One day, your skull will be as empty",
+        "as a conch shell on a fence post",
+        "full of wind and gentle quiet.",
+        "Today, it is a cauldron of ghosts.",
+        "Flesh and electricity.",
+        "Water and memory.",
+        "A machine that makes reality.",
+        "Now. Here. Your skull is the garden",
+        "where fact flowers into meaning."
+    ],
+    linecount: 9,
+    user_id: 1
+)
+
+Poem.create(
+    title: "Maybe the Best Thing Ever",
+    author: "Unknown",
+    lines: [
+        "trust in time",
+        "especially when time says",
+        "no"
+    ],
+    linecount: 3,
+    user_id: 2
+)
+
+Poem.create(
+    title: "Unknown",
+    author: "Unknown",
+    lines: [
+        "I know, you never intended to be in this world.",
+        "But you're in it all the same.",
+        "--",
+        "So why not get started immediately.",
+        "--",
+        "I mean, belonging to it.",
+        "There is so much to admire, to weep over."
+    ],
+    linecount: 7,
+    user_id: 3
+)
+
+Poem.create(
+    title: "from The Year of Floods",
+    author: "Margaret Atwood",
+    lines: [
+        "Whatever arrives from",
+        "the shadows you must",
+        "greet as a blessing."
+    ],
+    linecount: 3,
+    user_id: 4
+)
+
+Poem.create(
+    title: "Burning the Old Year",
+    author: "Naomi Shibab Nye",
+    lines: [
+        "So much of any year is flammable,",
+        "lists of vegetables, partial poems.",
+        "Orange swirling flame of days",
+        "so little is a stone."
+    ],
+    linecount: 4,
+    user_id: 1
+)
+
+Poem.create(
+    title: "Philip Pullman--Untitled",
+    author: "Philip Pullman",
+    lines: [
+        "Poetry is not a fancy way of giving you information, it's an incantation.",
+        "It is actually a magic spell.",
+        "It changes things; it changes you.",
+        "- Philip Pullman"
+    ],
+    linecount: 3,
+    user_id: 2
+)
+
+Poem.create(
+    title: "Good Bones",
+    author: "Maggie Smith",
+    lines: [
+        "Life is short, though I keep this from my children.",
+        "Life is short, and I've shortened mine",
+        "in a thousand delicious, ill-advised ways,",
+        "a thousand deliciously ill-advised ways",
+        "I'll keep from my children. The owrld is at least",
+        "fifty percent terrible, and that's a conservative",
+        "estimate, though I keep this from my children.",
+        "For every bird there is a stone thrown at a bird.",
+        "For every loved child, a child broken, bagged,",
+        "sunk in a lake. Life is short and the world",
+        "is at least half terrible, and for every kind",
+        "stranger, there is one who would break you,",
+        "though I keep this from my children. I am trying",
+        "to sell them the world. Any decent realtor,",
+        "walking you through a real shithole, chirps on",
+        "about good bones: This place could be beautiful,",
+        "right? You could make this place beautiful."
+    ],
+    linecount: 17,
+    user_id: 3
+)
+
+Poem.create(
+    title: "from The Waves",
+    author: "Virginia Woolf",
+    lines: [
+        "I rise from my worst",
+        "disasters, I turn, I",
+        "change."
+    ],
+    linecount: 3,
+    user_id: 4
+)
+
+Poem.create(
+    title: "s.c.lourie--Untitled",
+    author: "s.c. lourie",
+    lines: [
+        "I just want to be",
+        "with cracked people now.",
+        "People tht have been",
+        "cracked open by life.",
+        "Those who aren't frightened",
+        "of vulnerability",
+        "or scared of tears.",
+        "And they grow softer",
+        "by the day.",
+        "Choosing the uncertain path",
+        "where nothing is promised",
+        "because that's where dreams live.",
+        "They look messier",
+        "on the outside.",
+        "But their worlds within",
+        "are made of gold."
+    ],
+    linecount: 16,
+    user_id: 1
+)
+
+Poem.create(
+    title: "from Sputnik Sweetheart",
+    author: "Haruki Murakami",
+    lines: [
+        "I began to draw an invisible",
+        "boundary between myself and other",
+        "people. No matter who I was dealing",
+        "with. I maintained a set distance,",
+        "carefully monitoring the person's",
+        "attitude so that they wouldn't get any",
+        "closer. I didn't easily swallow what",
+        "other people told me. My only",
+        "passions were books and music."
+    ],
+    linecount: 9,
+    user_id: 2
+)
+
+Poem.create(
+    title: "Pierre Jeanty--Untitled",
+    author: "Pierre Jeanty",
+    lines: [
+        "You are everything",
+        "my imagination has painted as love",
+        "with even more colors"
+    ],
+    linecount: 3,
+    user_id: 3
+)
+
+Poem.create(
+    title: "nizariat--Untitled",
+    author: "nizariat",
+    lines: [
+        "The finest souls are those",
+        "who gulped pain and avoided",
+        "making others taste it."
+    ],
+    linecount: 3,
+    user_id: 4
+)
+
+Poem.create(
+    title: "Tyler Knott Gregson--Untitled",
+    author: "Tyler Knott Gregson",
+    lines: [
+        "I love you wildly,",
+        "madly,",
+        "and without reason;",
+        "I love you softly,",
+        "with tender hands and",
+        "softened spirit,",
+        "I love you patiently,",
+        "but outlined",
+        "in an urgency I cannot",
+        "define.",
+        "I love you",
+        "and you can take your time",
+        "discovering all",
+        "the hows;",
+        "I love you",
+        "and you will never doubt",
+        "the why."
+    ],
+    linecount: 17,
+    user_id: 1
+)
+
+Poem.create(
+    title: "Silas House--Untitled",
+    author: "Silas House",
+    lines: [
+        "You are so good. So good, you're always",
+        "feeling so much. And sometimes it feels",
+        "like you're gonna bust wide open from all",
+        "the feelings, don't it? People like you are",
+        "the best in the world, but you sure do",
+        "suffer for it."
+    ],
+    linecount: 6,
+    user_id: 2
+)
+
+Poem.create(
+    title: "Victoria Erickson--Untitled",
+    author: "Victoria Erickson",
+    lines: [
+        "If you inherently long for",
+        "something, become it first. If you",
+        "want gardens, become the",
+        "gardener. If you want love, embody",
+        "love. If you want mental",
+        "stimulation, change the",
+        "conversation. If you want peace,",
+        "exude calmness. If you want to fill",
+        "your world with artists, begin to",
+        "paint. If you want to be valued,",
+        "respect your own time. If you want",
+        "to live ecstatically, find the ecstasy,",
+        "within yourself. This is how to",
+        "draw it in, day by day, inch by inch."
+    ],
+    linecount: 14,
+    user_id: 3
+)
+
+Poem.create(
+    title: "Unknown",
+    author: "Unknown",
+    lines: [
+        "Thus we're caught in a maelstrom of cyclical crises",
+        "and precarity, in a gladatorial arena rigged against",
+        "us where losing means poverty and even death,",
+        "being crushed between stagnant wages and rising,",
+        "costs, under constant pressure and surveillance to",
+        "overwork ourselves, consigned to the",
+        "meaninglessness of producing for profit,",
+        "powerless to contribute to running things,",
+        "dehumanised and reduced to mere tools",
+        "browbeaten in a hyper-macho militaristic",
+        "atmosphere, abandoned in an atomised",
+        "'uncommunity', and gaslighted by media into",
+        "fetishising commodities and depending on",
+        "expensive objects for self-esteem."
+    ],
+    linecount: 14,
+    user_id: 4
+)
+
+Poem.create(
+    title: "from Extremely Loud and Incredibly Close",
+    author: "Jonathan Safran Foer",
+    lines: [
+        "Sometimes I can hear",
+        "my bones straining",
+        "under the weight of all",
+        "the lives I'm not",
+        "living."
+    ],
+    linecount: 5,
+    user_id: 1
+)
+
+Poem.create(
+    title: "Oxygen",
+    author: "Ellis Nightinggale",
+    lines: [
+        "It's quiet here between the trees",
+        "And I can almost feel",
+        "The weight of the centuries",
+        "Begin to crack and peel.",
+        "I breathe and re-breathe oxygen.",
+        "What was and what will be,",
+        "And for a moment as I walk",
+        "It's just the earth and me."
+    ],
+    linecount: 8,
+    user_id: 2
+)
+
+Poem.create(
+    title: "After a while",
+    author: "Jorge Luis Borges",
+    lines: [
+        "So you plant your own garden",
+        "and decorate your own soul,",
+        "instead of waiting for",
+        "someone to bring you flowers."
+    ],
+    linecount: 4,
+    user_id: 3
+)
+
+Poem.create(
+    title: "Tell The People You Love That You Love Them",
+    author: "Rachel C. Lewis",
+    lines: [
+        "I love being horribly straightforward. I love sending",
+        "reckless text messages (because how reckless can a form",
+        "of digitizied communication be?) and telling people I love",
+        "them and telling people they are absolutely magical",
+        "humans and I cannot believe they really exist. I love",
+        " saying, 'Kiss me harder', and 'You're a good person', and,",
+        "'You brighten my day'. I live my life as straight-forward",
+        "as possible.",
+        "Because one day, I might get hit by a bus.",
+        "--",
+        "Maybe it's weird. Maybe it's scary. Maybe it seems",
+        "downright impossible to just be--to just let people know",
+        "you want them, need them, feel like, in this very",
+        "moment, you will die if you do not see them, hold them,",
+        "touch them in some way whether its your feet on their",
+        "thighs on the couch or your tongue in their mouth or",
+        "your heart in their hands.",
+        "--",
+        "But there is nothing more beautiful than being desparate.",
+        "--",
+        "And there is nothing more risky than pretending not to care.",
+        "We are young and we are human and we are beautiful",
+        "and we are not as in control as we think we are. We",
+        "never know who needs us back. We never know the",
+        "magic that can arise between ourselves and other",
+        "humans.",
+        "We never know when the bus is coming."
+    ],
+    linecount: 24,
+    user_id: 4
+)
+
+Poem.create(
+    title: "Inscription found in 17th century forester's house in Lower Saxony, Germany",
+    author: "Unknown",
+    lines: [
+        "I am the forest, I am ancient. I",
+        "treasure the stag, I treasure the",
+        "deer. I shelter you from storm, I",
+        "shelter you from snow. I resist the",
+        "frost, I keep the source. I nurse the",
+        "earth, I am always htere. I build",
+        "your house, I kindle your hearth.",
+        "Therefore, you people, hold me",
+        "dear."
+    ],
+    linecount: 9,
+    user_id: 1
+)
+
 puts "Writing reviews..."
 
 Comment.create(
